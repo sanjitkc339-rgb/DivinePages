@@ -45,6 +45,7 @@
         applyTheme();
         setupEventListeners();
         updateMeta();
+        showContinueReading();
     }
 
     function loadState() {
@@ -82,6 +83,35 @@
                 el.textContent = SACRED_TEXTS[key].length + ' chapters available';
             }
         });
+    }
+
+    // ── Continue Reading ──
+    function saveLastRead() {
+        if (!state.currentBook) return;
+        const ch = SACRED_TEXTS[state.currentBook][state.currentChapterIdx];
+        localStorage.setItem('stl-lastread', JSON.stringify({
+            book: state.currentBook,
+            chapterIdx: state.currentChapterIdx,
+            title: ch.title,
+        }));
+    }
+
+    function showContinueReading() {
+        try {
+            const data = JSON.parse(localStorage.getItem('stl-lastread'));
+            if (!data || !data.book || !SACRED_TEXTS[data.book]) return;
+            const el = $('continueReading');
+            $('continueChapter').textContent = bookNames[data.book] + ' — ' + data.title;
+            el.style.display = 'flex';
+            $('continueBtn').onclick = () => {
+                state.currentBook = data.book;
+                state.currentChapterIdx = data.chapterIdx;
+                showView('reading');
+                sidebarTitle.textContent = bookNames[state.currentBook];
+                renderChapterList();
+                renderChapter();
+            };
+        } catch { /* ignore */ }
     }
 
     // ── Navigation helpers ──
@@ -161,6 +191,9 @@
 
         // Update bookmark button
         updateBookmarkBtn();
+
+        // Save last read position
+        saveLastRead();
 
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }

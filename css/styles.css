@@ -253,6 +253,57 @@ body {
     line-height: 1.8;
 }
 
+/* Continue Reading Banner */
+.continue-reading {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px 28px;
+    background: linear-gradient(135deg, var(--accent-light), var(--bg-card));
+    border: 1px solid var(--accent);
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 12px var(--shadow);
+    flex-wrap: wrap;
+}
+
+.continue-label {
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+}
+
+.continue-chapter {
+    font-size: 1rem;
+    color: var(--text-primary);
+    flex: 1;
+    min-width: 120px;
+}
+
+.continue-btn {
+    background: var(--accent);
+    color: #fff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all var(--transition);
+    white-space: nowrap;
+}
+
+.continue-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 14px rgba(196, 151, 59, 0.4);
+}
+
 /* Book Cards */
 .book-cards {
     display: grid;
