@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sacred Texts Library</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📖</text></svg>">
+</head>
+<body>
+    <!-- Top Navigation Bar -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-left">
+            <button class="nav-btn home-btn" id="homeBtn" title="Home">
+                <span class="icon">📖</span>
+                <span class="nav-title">Sacred Texts Library</span>
+            </button>
+            <div class="breadcrumb" id="breadcrumb"></div>
+        </div>
+        <div class="nav-right">
+            <div class="search-box" id="searchBox" style="display:none;">
+                <input type="text" id="searchInput" placeholder="Search verses..." autocomplete="off">
+                <button class="nav-btn" id="searchCloseBtn" title="Close search">✕</button>
+            </div>
+            <button class="nav-btn" id="searchToggle" title="Search" style="display:none;">🔍</button>
+            <button class="nav-btn" id="bookmarkBtn" title="Bookmarks" style="display:none;">🔖</button>
+            <div class="font-controls" id="fontControls" style="display:none;">
+                <button class="nav-btn" id="fontDecrease" title="Decrease font">A-</button>
+                <button class="nav-btn" id="fontIncrease" title="Increase font">A+</button>
+            </div>
+            <button class="nav-btn theme-toggle" id="themeToggle" title="Toggle theme">🌙</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content" id="mainContent">
+        <!-- Home / Landing View -->
+        <section class="home-view" id="homeView">
+            <div class="hero">
+                <h1 class="hero-title">Sacred Texts Library</h1>
+                <p class="hero-subtitle">Explore timeless wisdom from three great spiritual traditions of humanity</p>
+            </div>
+            <div class="book-cards">
+                <div class="book-card" data-book="bible">
+                    <div class="card-icon">✝️</div>
+                    <h2 class="card-title">The Holy Bible</h2>
+                    <p class="card-desc">The sacred scripture of Christianity, containing the Old and New Testaments. King James Version.</p>
+                    <span class="card-meta" id="bibleMeta"></span>
+                    <button class="card-btn">Read Now →</button>
+                </div>
+                <div class="book-card" data-book="quran">
+                    <div class="card-icon">☪️</div>
+                    <h2 class="card-title">The Holy Quran</h2>
+                    <p class="card-desc">The central religious text of Islam, believed to be a revelation from God (Allah). English Translation.</p>
+                    <span class="card-meta" id="quranMeta"></span>
+                    <button class="card-btn">Read Now →</button>
+                </div>
+                <div class="book-card" data-book="gita">
+                    <div class="card-icon">🕉️</div>
+                    <h2 class="card-title">Bhagavad Gita</h2>
+                    <p class="card-desc">A 700-verse Hindu scripture, part of the Mahabharata, a dialogue between Prince Arjuna and Lord Krishna.</p>
+                    <span class="card-meta" id="gitaMeta"></span>
+                    <button class="card-btn">Read Now →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reading View -->
+        <section class="reading-view" id="readingView" style="display:none;">
+            <aside class="chapter-sidebar" id="chapterSidebar">
+                <h3 class="sidebar-title" id="sidebarTitle"></h3>
+                <ul class="chapter-list" id="chapterList"></ul>
+            </aside>
+            <div class="reading-pane" id="readingPane">
+                <div class="chapter-header" id="chapterHeader">
+                    <h2 class="chapter-title" id="chapterTitle"></h2>
+                    <p class="chapter-subtitle" id="chapterSubtitle"></p>
+                </div>
+                <div class="verses-container" id="versesContainer"></div>
+                <div class="chapter-nav">
+                    <button class="ch-nav-btn" id="prevChapter">← Previous</button>
+                    <button class="ch-nav-btn" id="nextChapter">Next →</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Search Results View -->
+        <section class="search-results" id="searchResults" style="display:none;">
+            <h3 class="search-results-title" id="searchResultsTitle"></h3>
+            <div class="search-results-list" id="searchResultsList"></div>
+        </section>
+
+        <!-- Bookmarks View -->
+        <section class="bookmarks-view" id="bookmarksView" style="display:none;">
+            <h2 class="bookmarks-title">🔖 Your Bookmarks</h2>
+            <div class="bookmarks-list" id="bookmarksList"></div>
+            <p class="no-bookmarks" id="noBookmarks" style="display:none;">No bookmarks saved yet. Click the 🔖 icon while reading to bookmark a chapter.</p>
+        </section>
+    </main>
+
+    <!-- Sidebar Toggle for Mobile -->
+    <button class="sidebar-toggle" id="sidebarToggle" style="display:none;">☰ Chapters</button>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toast"></div>
+
+    <script src="js/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
